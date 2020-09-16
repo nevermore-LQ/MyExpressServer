@@ -1,0 +1,25 @@
+mixin navbar()
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    a(href="/").navbar-brand
+      img(src="/images/logo.gif", style="width: 30px; height: 30px").d-line-block.align-top
+    div(id='navbar-content').collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          a(href="/").nav-link
+            span Home
+        li.nav-item
+          a(href="/flights").nav-link
+            span Flights
+        li.nav-item
+          a(href="/bookings").nav-link
+            span Bookings
+    .mr-auto
+      ul.navbar-nav
+        if !user
+          li.nav-item
+            a(href="/signup").nav-link Sign Up
+          li.nav-item
+            a(href="/login").nav-link Login
+        else
+          li.nav-item
+            a(href="/logout").nav-link Logout

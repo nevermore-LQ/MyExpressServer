@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  div(style="margin:30px; font-size: 1.5rem") 
+    if user
+      p Welcome !{user.username}, This is the management system for Unreal Travel Intersteller company.
+      p As a 
+        strong Administrator
+        |, you are authorized to 
+        strong browse 
+        | and 
+        strong edit 
+        | flights and bookings in the system.
+    else
+      p Welcome, This is the management system for Unreal Travel Intersteller company.
+      p As a 
+        strong visitor
+        | , you are authorized to 
+        strong browse 
+        | flights and bookings in the system.

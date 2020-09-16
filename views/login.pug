@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  div(style="width:30%; text-align:center; margin: 4rem auto;")
+    div.jumbotron
+      div
+        h2 Login
+        if messages.error
+          span(style="color:red") #{messages.error}
+      form(action="/login", method="POST")
+        div.form-group
+          div 
+            label.m-1 User Name:
+            input(type="text", required, name="username", id="username").form_control.m-1
+          div
+            label.m-1 Password:&nbsp;&nbsp;
+            input(type="password", required, name="password", id="password").form_control.m-1
+          button(type="submit").btn.btn-success.m-2 Login
+          a(href="/").btn.btn-secondary.m-2 Cancel

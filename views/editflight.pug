@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .container
+    h1 #{flight.name}
+    script let url= flight.name===""?"/flight/add":`/flight/${flight.id}/edit`;
+    form(action=url, method="POST", enctype="multipart/form-data")
+      div.form-group
+        lable(for="name") Name:
+        input(type="text", id="name", name="name",value=flight.name, required).form-control
+      div.form-group
+        label(for="price") Price:
+        input(type="number", id="price", min=0, name="price",value=flight.price, required).form-control
+      div.form-group.form-check
+        input(type="checkbox", value="spaceship", id="spaceship", checked=flight.spaceship, name="spaceship").form-check-input
+        label(for="spaceship").form-check-label Spaceship
+      div.form-group.form-check
+        input(type="checkbox", value="broomstick", id="broomstick", checked=flight.broomstick, name="broomstick").form-check-input
+        label(for="broomstick").form-check-label Broomstick
+      div.form-group
+        label(for="description") Description:
+        textarea(id="description", name="description", required).form-control #{flight.description}
+      div.form-group
+        if flight.img!==""
+          label(for="starImage") Star Image:
+          br
+          img(src=flight.img).star-thumbnail
+        br
+        br
+        input(type="file",id="starImage",name="starImage",accept=".jpg").form-control-file
+      button(type="submit", name="starImage" style="margin:5px").btn.btn-primary Save
+      a(style="margin:5px", href="/flights").btn.btn-secondary Cancel

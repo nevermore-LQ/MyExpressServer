@@ -1,0 +1,31 @@
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+.table-item {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.table td {
+  vertical-align: middle !important;
+}
+
+table {
+  counter-reset: row-num-1;
+}
+table tr {
+  counter-increment: row-num;
+}
+table tr td:first-child::before {
+  content: counter(row-num);
+}
+
+.star-thumbnail {
+  width: 50%;
+}

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .container
+    h1 FLIGHTS
+      table.table.table-dark.table-item.table-sm
+        thead
+          tr
+            th(scope="col") #
+            th(scope="col") Destination
+            th(scope="col") Spaceship
+            th(scope="col") Broomstick
+            th(scope="col") Price
+            th(scope="col") 
+            th(scope="col") 
+        tbody
+          for item in flights
+            tr(id=item.id)
+              td
+              td 
+                span #{item.name}
+              td
+                span #{item.spaceship}
+              td
+                span #{item.broomstick}
+              td
+                span #{item.price}
+              td
+                a(href=`/flight/${item.id}/edit`).btn.btn-warning Edit
+              td
+                form(action=`/flight/${item.id}/delete`, method="POST")
+                  button.btn.btn-danger Delete
+      a(href="/flight/add").btn.btn-primary Add New Flight

@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  .container
+    h1 BOOKINGS
+      table.table.table-dark.table-item.table-sm
+        thead
+          tr
+            th(scope="col") #
+            th(scope="col") Date
+            th(scope="col") Customer Name
+            th(scope="col") Destination
+            th(scope="col") Transportation
+            th(scope="col") Price
+            th(scope="col") Ticket Number
+            th(scope="col") Total Cost
+            th(scope="col") 
+        tbody
+          for item in bookings
+            tr(id=item.bookingid)
+              td
+              td
+                span #{item.date}
+              td 
+                span #{item.customername}
+              td
+                span #{item.destination}
+              td
+                span #{item.transportation}
+              td
+                span #{item.price}
+              td
+                span #{item.ticketnumber}
+              td
+                span #{item.totalcost}
+              td
+                form(action=`/booking/${item.bookingid}/delete`, method="POST")
+                  button.btn.btn-danger Delete
