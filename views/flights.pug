@@ -2,7 +2,8 @@ extends layout
 
 block content
   .container
-    h1 FLIGHTS
+    h1 FLIGHTS 
+    h3 (rows 1-7 are reserved from modifying for display purpose)
       table.table.table-dark.table-item.table-sm
         thead
           tr
@@ -14,7 +15,7 @@ block content
             th(scope="col") 
             th(scope="col") 
         tbody
-          for item in flights
+          each item, index in flights
             tr(id=item.id)
               td
               td 
@@ -26,8 +27,8 @@ block content
               td
                 span #{item.price}
               td
-                a(href=`/flight/${item.id}/edit`).btn.btn-warning Edit
+                a(href=(index<7?"":`/flight/${item.id}/edit`), style="color:#F7F7F7").btn.btn-warning Edit
               td
                 form(action=`/flight/${item.id}/delete`, method="POST")
-                  button.btn.btn-danger Delete
+                  button(disabled=(index<7)).btn.btn-danger Delete
       a(href="/flight/add").btn.btn-primary Add New Flight

@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: realadmin
+      POSTGRES_PASSWORD: 147258369
+      POSTGRES_DB: mydb
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+  web:
+    image: myexpress
+    environment:
+      DATABASE_URL: postgres://realadmin:147258369@postgres:5432/mydb
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    ports:
+      - "8080:8080"
+    command: ["npm", "start"]
+
+volumes:
+  database-data:
